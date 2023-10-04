@@ -91,6 +91,6 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
 
-kapt{
+kapt {
     correctErrorTypes = true
 }
