@@ -9,15 +9,15 @@ import retrofit2.http.Query
 interface MealApi {
 
     @GET("categories.php")
-    fun getCategories(): CategoriesResponse
+    suspend fun getCategories(): CategoriesResponse
 
     @GET("filter.php")
-    fun getMealsByCategory(
+    suspend fun getMealsByCategory(
         @Query("c") category: String,
     ): MealsResponse
 
     @GET("lookup.php")
-    fun getMealDetail(
+    suspend fun getMealDetail(
         @Query("i") mealId: String,
     ): MealsDetailResponse
 }

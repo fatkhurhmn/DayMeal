@@ -6,8 +6,10 @@ import com.muffar.daymeal.domain.model.Category
 import com.muffar.daymeal.domain.model.Meal
 import com.muffar.daymeal.domain.repository.MealRepository
 import com.muffar.daymeal.utils.DataMapper
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 class MealRepositoryImpl(
     private val mealApi: MealApi,
@@ -18,12 +20,12 @@ class MealRepositoryImpl(
             val response = mealApi.getCategories()
             val categories = response.categories.map {
                 DataMapper.mapCategoriesResponseToCategory(it)
-            }
-            Resource.Success(categories)
+            }.sortedBy { it.name }
+            emit(Resource.Success(categories))
         } catch (e: Exception) {
             emit(Resource.Error(e.message ?: ""))
         }
-    }
+    }.flowOn(Dispatchers.IO)
 
     override suspend fun getMealsByCategory(category: String): Flow<Resource<List<Meal>>> = flow {
         emit(Resource.Loading)
@@ -32,20 +34,20 @@ class MealRepositoryImpl(
             val meals = response.meals.map {
                 DataMapper.mapMealResponseToMeal(it)
             }
-            Resource.Success(meals)
+            emit(Resource.Success(meals))
         } catch (e: Exception) {
             emit(Resource.Error(e.message ?: ""))
         }
-    }
+    }.flowOn(Dispatchers.IO)
 
     override suspend fun getMealDetail(id: String): Flow<Resource<Meal>> = flow {
         emit(Resource.Loading)
         try {
             val response = mealApi.getMealDetail(id)
             val meal = DataMapper.mapMealResponseToMeal(response.meals[0])
-            Resource.Success(meal)
+            emit(Resource.Success(meal))
         } catch (e: Exception) {
             emit(Resource.Error(e.message ?: ""))
         }
-    }
+    }.flowOn(Dispatchers.IO)
 }
