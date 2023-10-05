@@ -5,7 +5,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.muffar.daymeal.domain.model.Category
+import com.muffar.daymeal.domain.model.Meal
 import com.muffar.daymeal.presentation.categories.CategoriesScreen
+import com.muffar.daymeal.presentation.detail.DetailScreen
 import com.muffar.daymeal.presentation.meals.MealsScreen
 import com.muffar.daymeal.utils.Constants
 
@@ -31,10 +33,27 @@ fun MainNavGraph(
         }
 
         composable(route = Screen.Meals.route) {
-            navController.previousBackStackEntry?.savedStateHandle
-                ?.get<Category>(Constants.CATEGORY_KEY)?.let { category ->
+            navController.previousBackStackEntry?.savedStateHandle?.get<Category>(Constants.CATEGORY_KEY)
+                ?.let { category ->
                     MealsScreen(
                         category = category,
+                        navigateToDetail = { meal ->
+                            navController.currentBackStackEntry?.savedStateHandle?.set(
+                                Constants.MEAL_KEY,
+                                meal
+                            )
+                            navController.navigate(Screen.Detail.route)
+                        },
+                        navigateUp = { navController.popBackStack() }
+                    )
+                }
+        }
+
+        composable(route = Screen.Detail.route) {
+            navController.previousBackStackEntry?.savedStateHandle?.get<Meal>(Constants.MEAL_KEY)
+                .let { meal ->
+                    DetailScreen(
+                        meal = meal,
                         navigateUp = { navController.popBackStack() }
                     )
                 }

@@ -7,6 +7,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.muffar.daymeal.domain.model.Category
+import com.muffar.daymeal.domain.model.Meal
 import com.muffar.daymeal.presentation.meals.components.MealsListContent
 import com.muffar.daymeal.presentation.meals.components.MealsLoading
 import com.muffar.daymeal.ui.common.EmptyListMessage
@@ -17,6 +18,7 @@ import com.muffar.daymeal.ui.common.RetryLoadData
 fun MealsScreen(
     category: Category,
     modifier: Modifier = Modifier,
+    navigateToDetail: (Meal) -> Unit,
     navigateUp: () -> Unit,
     viewModel: MealsViewModel = hiltViewModel(),
 ) {
@@ -32,7 +34,7 @@ fun MealsScreen(
         showBackNavigation = true,
         onBackNavigationClick = navigateUp,
     ) {
-        Column {
+        Column(modifier = modifier) {
             if (state.isLoading) {
                 MealsLoading(category)
             }
@@ -49,7 +51,7 @@ fun MealsScreen(
                 if (state.meals.isNotEmpty()) {
                     MealsListContent(
                         meals = state.meals,
-                        onClick = { },
+                        onClick = { navigateToDetail(it)},
                         category = category
                     )
                 } else {

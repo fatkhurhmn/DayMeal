@@ -4,4 +4,7 @@
     <string name="category">Kategori</string>
     <string name="hai_meallover">Hai, MealLover!</string>
     <string name="welcome">Selamat berkreasi masakan anda,</string>
+    <string name="main_ingredient">Bahan utama</string>
+    <string name="step">Langkah memasak</string>
+    <string name="tutorial">Tutorial memasak</string>
 </resources>

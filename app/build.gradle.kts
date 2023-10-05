@@ -72,6 +72,7 @@ dependencies {
 
     //Accompanist
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta")
+    implementation ("com.google.accompanist:accompanist-pager:0.27.1")
 
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -83,6 +84,9 @@ dependencies {
 
     //shimmer
     implementation("com.valentinilk.shimmer:compose-shimmer:1.0.3")
+
+    //youtube-player
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
