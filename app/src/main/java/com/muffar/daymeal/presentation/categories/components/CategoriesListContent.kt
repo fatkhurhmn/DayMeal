@@ -17,6 +17,7 @@ import com.muffar.daymeal.domain.model.Category
 @Composable
 fun CategoriesListContent(
     categories: List<Category>,
+    onClick: (Category) -> Unit,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -32,10 +33,10 @@ fun CategoriesListContent(
                 style = MaterialTheme.typography.titleLarge,
             )
         }
-        items(categories) {
+        items(categories) { category ->
             CategoriesItem(
-                category = it,
-                onClick = {}
+                category = category,
+                onClick = { onClick(category) }
             )
         }
     }

@@ -5,8 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.muffar.daymeal.presentation.categories.CategoriesScreen
+import com.muffar.daymeal.ui.navigation.MainNavGraph
 import com.muffar.daymeal.ui.theme.DayMealTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
                         darkIcons = true
                     )
                 }
-                CategoriesScreen()
+                MainNavGraph(navController = rememberNavController())
             }
         }
     }
