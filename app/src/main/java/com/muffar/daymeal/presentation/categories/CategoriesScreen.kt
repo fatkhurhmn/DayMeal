@@ -26,7 +26,6 @@ fun CategoriesScreen(
     Column(
         modifier = modifier.fillMaxSize()
     ) {
-
         CategoriesHeader(
             modifier = Modifier
                 .padding(16.dp)

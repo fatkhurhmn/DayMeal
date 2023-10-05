@@ -33,7 +33,10 @@ fun MainNavGraph(
         composable(route = Screen.Meals.route) {
             navController.previousBackStackEntry?.savedStateHandle
                 ?.get<Category>(Constants.CATEGORY_KEY)?.let { category ->
-                    MealsScreen(category = category)
+                    MealsScreen(
+                        category = category,
+                        navigateUp = { navController.popBackStack() }
+                    )
                 }
         }
     }
