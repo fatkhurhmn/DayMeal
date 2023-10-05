@@ -1,4 +1,4 @@
-package com.muffar.daymeal.presentation.category.components
+package com.muffar.daymeal.presentation.categories.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,7 +15,7 @@ import com.muffar.daymeal.R
 import com.muffar.daymeal.domain.model.Category
 
 @Composable
-fun CategoryListContent(
+fun CategoriesListContent(
     categories: List<Category>,
 ) {
     LazyVerticalGrid(
@@ -33,7 +33,10 @@ fun CategoryListContent(
             )
         }
         items(categories) {
-            CategoryItem(category = it)
+            CategoriesItem(
+                category = it,
+                onClick = {}
+            )
         }
     }
 }

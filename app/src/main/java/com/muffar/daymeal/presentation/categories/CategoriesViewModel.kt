@@ -1,4 +1,4 @@
-package com.muffar.daymeal.presentation.category
+package com.muffar.daymeal.presentation.categories
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -13,12 +13,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CategoryViewModel @Inject constructor(
+class CategoriesViewModel @Inject constructor(
     private val mealUseCases: MealUseCases,
 ) : ViewModel() {
 
-    private val _state = mutableStateOf(CategoryState())
-    val state: State<CategoryState> = _state
+    private val _state = mutableStateOf(CategoriesState())
+    val state: State<CategoriesState> = _state
 
     init {
         getCategories()

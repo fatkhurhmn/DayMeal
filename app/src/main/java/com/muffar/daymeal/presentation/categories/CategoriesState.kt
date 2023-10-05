@@ -1,8 +1,8 @@
-package com.muffar.daymeal.presentation.category
+package com.muffar.daymeal.presentation.categories
 
 import com.muffar.daymeal.domain.model.Category
 
-data class CategoryState(
+data class CategoriesState(
     val categories: List<Category>? = null,
     val isLoading: Boolean = false,
     val isError: Boolean = false,

@@ -11,6 +11,7 @@ object DataMapper {
         Category(
             id = value.idCategory,
             name = value.strCategory,
+            description = value.strCategoryDescription,
             image = value.strCategoryThumb
         )
 

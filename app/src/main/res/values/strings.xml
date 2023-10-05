@@ -2,4 +2,6 @@
     <string name="app_name">DayMeal</string>
     <string name="no_results_found">Data tidak tersedia</string>
     <string name="category">Kategori</string>
+    <string name="hai_meallover">Hai, MealLover!</string>
+    <string name="welcome">Selamat berkreasi masakan anda,</string>
 </resources>

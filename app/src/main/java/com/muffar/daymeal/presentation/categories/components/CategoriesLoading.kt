@@ -1,4 +1,4 @@
-package com.muffar.daymeal.presentation.category.components
+package com.muffar.daymeal.presentation.categories.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -21,7 +21,7 @@ import com.muffar.daymeal.R
 import com.valentinilk.shimmer.shimmer
 
 @Composable
-fun CategoryLoading() {
+fun CategoriesLoading() {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         verticalArrangement = Arrangement.spacedBy(10.dp),

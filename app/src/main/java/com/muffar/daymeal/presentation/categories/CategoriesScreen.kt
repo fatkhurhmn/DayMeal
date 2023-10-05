@@ -1,4 +1,4 @@
-package com.muffar.daymeal.presentation.category
+package com.muffar.daymeal.presentation.categories
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,16 +8,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.muffar.daymeal.presentation.category.components.CategoryHeader
-import com.muffar.daymeal.presentation.category.components.CategoryListContent
-import com.muffar.daymeal.presentation.category.components.CategoryLoading
+import com.muffar.daymeal.presentation.categories.components.CategoriesHeader
+import com.muffar.daymeal.presentation.categories.components.CategoriesListContent
+import com.muffar.daymeal.presentation.categories.components.CategoriesLoading
 import com.muffar.daymeal.ui.common.EmptyListMessage
 import com.muffar.daymeal.ui.common.RetryLoadData
 
 @Composable
-fun CategoryScreen(
+fun CategoriesScreen(
     modifier: Modifier = Modifier,
-    viewModel: CategoryViewModel = hiltViewModel(),
+    viewModel: CategoriesViewModel = hiltViewModel(),
 ) {
     val state = viewModel.state.value
 
@@ -25,14 +25,14 @@ fun CategoryScreen(
         modifier = modifier.fillMaxSize()
     ) {
 
-        CategoryHeader(
+        CategoriesHeader(
             modifier = Modifier
                 .padding(16.dp)
                 .fillMaxWidth()
         )
 
         if (state.isLoading) {
-            CategoryLoading()
+            CategoriesLoading()
         }
 
         if (state.isError) {
@@ -45,7 +45,7 @@ fun CategoryScreen(
 
         state.categories?.let {
             if (state.categories.isNotEmpty()) {
-                CategoryListContent(categories = state.categories)
+                CategoriesListContent(categories = state.categories)
             } else {
                 EmptyListMessage(modifier = Modifier.fillMaxSize())
             }

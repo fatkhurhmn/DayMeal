@@ -1,6 +1,7 @@
-package com.muffar.daymeal.presentation.category.components
+package com.muffar.daymeal.presentation.categories.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,9 +27,10 @@ import com.muffar.daymeal.domain.model.Category
 import com.muffar.daymeal.ui.theme.DayMealTheme
 
 @Composable
-fun CategoryItem(
+fun CategoriesItem(
     modifier: Modifier = Modifier,
     category: Category,
+    onClick: (Category) -> Unit,
 ) {
     val ctx = LocalContext.current
 
@@ -36,7 +38,8 @@ fun CategoryItem(
         modifier = modifier
             .fillMaxWidth()
             .height(130.dp)
-            .clip(MaterialTheme.shapes.medium),
+            .clip(MaterialTheme.shapes.medium)
+            .clickable { onClick(category) },
         shape = MaterialTheme.shapes.medium,
     ) {
         Box {
@@ -62,7 +65,7 @@ fun CategoryItem(
                     .fillMaxWidth()
                     .align(Alignment.BottomCenter)
                     .background(color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.3f))
-                    .padding(vertical = 4.dp, horizontal = 8.dp),
+                    .padding(vertical = 2.dp, horizontal = 8.dp),
             )
         }
     }
@@ -72,14 +75,16 @@ fun CategoryItem(
     showBackground = true,
 )
 @Composable
-fun CategoryItemPreview() {
+fun CategoriesItemPreview() {
     DayMealTheme {
-        CategoryItem(
+        CategoriesItem(
             category = Category(
                 id = "",
                 name = "Beef",
+                description = "",
                 image = "https://www.themealdb.com/images/category/beef.png"
-            )
+            ),
+            onClick = {}
         )
     }
 }
